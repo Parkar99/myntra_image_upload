@@ -6,9 +6,12 @@ from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+# Read README for more information
 import config
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Update XPATH's if the UI changes... Does not support drastic changes to the UI of Myntra
 UPLOAD_IMAGES_INPUT = '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/div[1]/div[2]/div/button/input'
 BRAND_INPUT = '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div/div[2]/div[2]/div/div/span[1]/div[2]/input'
 VAN_INPUT = (
@@ -18,15 +21,18 @@ COLOR_INPUT = (
     '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div/div[4]/input'
 )
 SUBMIT_BUTTON = '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div/div[5]/button'
+
 COLOR_JSON_PATH = os.path.join(CURRENT_DIR, 'color_list.json')
 
 
-def json_dump_colors(colors):
+def json_dump_colors(colors: list) -> None:
+    ''' Helper function to dump list object to json and write to file '''
     with open(COLOR_JSON_PATH, 'w') as f:
         f.write(json.dumps(colors))
 
 
-def json_load_colors():
+def json_load_colors() -> list:
+    ''' Helper function to read from json file and return contents parsed in list '''
     if os.path.isfile(COLOR_JSON_PATH):
         with open(COLOR_JSON_PATH, 'r') as f:
             cl = f.read()
@@ -37,8 +43,8 @@ def json_load_colors():
 
 
 options = webdriver.ChromeOptions()
-options.binary_location = '/usr/bin/brave-browser'
-chrome_driver_binary = '/home/nabeel/bin/chromedriver'
+# options.binary_location = '/usr/bin/brave-browser'
+# chrome_driver_binary = '/home/nabeel/bin/chromedriver'
 
 driver = webdriver.Chrome(chrome_driver_binary, options=options)
 driver.delete_all_cookies()
