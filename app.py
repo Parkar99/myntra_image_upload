@@ -95,6 +95,7 @@ for sku in all_skus:
     while True:
         print('n: New color')
         print('r: Remove color')
+        print('e: Exit')
         for i, color in enumerate(color_list):
             print(f'{i + 1}: {color}')
 
@@ -111,6 +112,8 @@ for sku in all_skus:
             except:
                 print('Try Again')
                 continue
+        elif choice == 'e':
+            exit()
         else:
             try:
                 color_choice = color_list[int(choice) - 1]
@@ -136,4 +139,4 @@ for sku in all_skus:
         )
     os.rmdir(os.path.join(CURRENT_WORKING_DIR, sku))
 
-    sleep(2)
+    input('Press enter to continue...\n')

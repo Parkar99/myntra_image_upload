@@ -1,6 +1,5 @@
-config.py
-tempCodeRunnerFile.py
-images*
-__pycache__
-progress.log
-color_list.json
+*
+.*
+!app.py
+!Pipfile
+!README.md
