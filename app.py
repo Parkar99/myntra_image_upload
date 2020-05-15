@@ -85,7 +85,8 @@ all_skus = list(
 
 for sku in all_skus:
     sku_dir = os.path.join(CURRENT_WORKING_DIR, sku)
-    images_list = (os.listdir(sku_dir)).sort()
+    images_list = os.listdir(sku_dir)
+    images_list.sort()
     for img in images_list:
         img_path = os.path.join(sku_dir, img)
         upload_images_element.send_keys(img_path)
