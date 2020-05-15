@@ -43,8 +43,8 @@ def json_load_colors() -> list:
 
 
 options = webdriver.ChromeOptions()
-# options.binary_location = '/usr/bin/brave-browser'
-# chrome_driver_binary = '/home/nabeel/bin/chromedriver'
+options.binary_location = '/usr/bin/brave-browser'
+chrome_driver_binary = '/home/nabeel/bin/chromedriver'
 
 driver = webdriver.Chrome(chrome_driver_binary, options=options)
 driver.delete_all_cookies()
@@ -85,7 +85,7 @@ all_skus = list(
 
 for sku in all_skus:
     sku_dir = os.path.join(CURRENT_WORKING_DIR, sku)
-    images_list = os.listdir(sku_dir)
+    images_list = (os.listdir(sku_dir)).sort()
     for img in images_list:
         img_path = os.path.join(sku_dir, img)
         upload_images_element.send_keys(img_path)
