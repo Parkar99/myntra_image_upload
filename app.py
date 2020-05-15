@@ -97,6 +97,7 @@ for sku in all_skus:
         print('n: New color')
         print('r: Remove color')
         print('e: Exit')
+        print()
         for i, color in enumerate(color_list):
             print(f'{i + 1}: {color}')
 
